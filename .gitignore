@@ -1,0 +1,22 @@
+# mojavi config files
+webapp/config/databases.ini
+webapp/config/settings.ini
+webapp/config/logging.ini
+webapp/config/factories.ini
+webapp/config.php
+docroot/.htaccess
+webapp/cache/*
+webapp/meta/version
+
+# install.ini local file
+init/install.ini
+
+#Subversion files
+.svn
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+# Log files
+webapp/meta/logs/*
