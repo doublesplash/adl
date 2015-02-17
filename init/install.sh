@@ -9,8 +9,7 @@ try {
     // Setup Vars
     $init_dir = dirname(__FILE__) . '/';
     $base_dir = realpath($init_dir . '../') . '/';
-    $admin_base_dir = $base_dir . 'admin/';
-    $api_base_dir = $base_dir . 'api/';
+    $admin_base_dir = $base_dir . '/';
     $settings_file = $init_dir . 'config.ini';
     
     $is_silent = false;
@@ -39,30 +38,6 @@ try {
     // +------------------------------------------------------------------------+
     // | Setup the DAO modules and any other links that need to be setup        |
     // +------------------------------------------------------------------------+
-    $lib_folders = array(
-        'Adl' => 'Adl',
-        'Mojavi' => 'Mojavi',
-        'Zend' => 'Zend',
-    );
-    
-    
-    foreach ($lib_folders as $lib_name => $lib_folder) {
-        if (!$is_silent) { StringTools::consoleWrite(' - dao path', $lib_folder, StringTools::CONSOLE_COLOR_YELLOW); }
-        if (file_exists($admin_base_dir . 'webapp/lib/' . $lib_folder) && is_dir($admin_base_dir . 'webapp/lib/' . $lib_folder)) {
-            // Setup lib for api
-            if (!file_exists($api_base_dir . "webapp/lib/" . $lib_folder) && !is_link($api_base_dir . "webapp/lib/" . $lib_folder)) {
-                $cmd = 'ln -s ' . $admin_base_dir . '/webapp/lib/' . $lib_folder . ' ' . $api_base_dir . 'webapp/lib/' . $lib_folder;
-                shell_exec($cmd);
-            } else if (is_link($api_base_dir . "webapp/lib/" . $lib_folder)) {
-                $cmd = 'rm -f  ' . $api_base_dir . 'webapp/lib/' . $lib_folder;
-                shell_exec($cmd);
-                
-                $cmd = 'ln -s ' . $admin_base_dir . 'webapp/lib/' . $lib_folder . ' ' . $api_base_dir . 'webapp/lib/' . $lib_folder;
-                shell_exec($cmd);
-            }
-        }
-    }
-    if (!$is_silent) { StringTools::consoleWrite(' - dao path', 'Saved', StringTools::CONSOLE_COLOR_GREEN, true); }
     
     // +------------------------------------------------------------------------+
     // | Select which databases.ini file to use for this project.  Any file in  |
@@ -89,7 +64,6 @@ try {
         }
         
         file_put_contents($admin_base_dir . "webapp/config/databases.ini", $config_contents);
-        file_put_contents($api_base_dir . "webapp/config/databases.ini", $config_contents);
         if (isset($ini_settings['db_host']) && trim($ini_settings['db_host']) != '') {
             if (!$is_silent) { StringTools::consoleWrite(' - databases', $ini_settings['db_host'], StringTools::CONSOLE_COLOR_GREEN, true); }
         } else {
@@ -116,7 +90,6 @@ try {
         }
         
         file_put_contents($admin_base_dir . "webapp/config.php", $config_contents);
-        file_put_contents($api_base_dir . "webapp/config.php", $config_contents);
         if (isset($ini_settings['common_path']) && trim($ini_settings['common_path']) != '') {
             if (!$is_silent) { StringTools::consoleWrite(' - mojavi framework', $ini_settings['common_path'], StringTools::CONSOLE_COLOR_GREEN, true); }
         } else {
@@ -137,7 +110,6 @@ try {
     $htaccess_contents[] = 'RewriteRule ^/([^.]+)\.(.*)$ /index.php?module=Default&action=$1 [L,QSA]';
     $htaccess_contents[] = 'RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]';
     file_put_contents($admin_base_dir . "docroot/.htaccess", $htaccess_contents);
-    file_put_contents($api_base_dir . "docroot/.htaccess", $htaccess_contents);
     if (!$is_silent) { StringTools::consoleWrite(' - htaccess', 'Saved', StringTools::CONSOLE_COLOR_GREEN, true); }
     */
     // +------------------------------------------------------------------------+
@@ -158,7 +130,6 @@ try {
             $factory_contents = str_replace("<<proj_name>>", basename(dirname($init_dir)), $factory_contents);
         }
         file_put_contents($admin_base_dir . "webapp/config/factories.ini", $factory_contents);
-        file_put_contents($api_base_dir . "webapp/config/factories.ini", $factory_contents);
         if (!$is_silent) { StringTools::consoleWrite(' - project', 'Saved', StringTools::CONSOLE_COLOR_GREEN, true); }
     }
     
@@ -173,7 +144,6 @@ try {
         if (!$is_silent) { StringTools::consoleWrite(' - logging', 'Saving', StringTools::CONSOLE_COLOR_YELLOW); }
         $logging_contents = file_get_contents($init_dir . "/config/logging.ini");
         file_put_contents($admin_base_dir . "webapp/config/logging.ini", $logging_contents);
-        file_put_contents($api_base_dir . "webapp/config/logging.ini", $logging_contents);
         if (!$is_silent) { StringTools::consoleWrite(' - logging', 'Saved', StringTools::CONSOLE_COLOR_GREEN, true); }
     }
     
@@ -290,7 +260,6 @@ try {
             $settings_contents = preg_replace("/<<password_salt>>/", 'password', $settings_contents);
         }
         file_put_contents($admin_base_dir . "webapp/config/settings.ini", $settings_contents);
-        file_put_contents($api_base_dir . "webapp/config/settings.ini", $settings_contents);
         if (!$is_silent) { StringTools::consoleWrite(' - settings', 'Saved', StringTools::CONSOLE_COLOR_GREEN, true); }
     }
 
@@ -301,7 +270,6 @@ try {
     // +------------------------------------------------------------------------+
     $cache_folders = array(
         $admin_base_dir . 'webapp/cache/',
-        $api_base_dir . 'webapp/cache/'
     );
     foreach ($cache_folders as $cache_folder) {
         if ($cache_handle = opendir($cache_folder)) {
@@ -329,8 +297,6 @@ try {
     $global_folders = array(
         "Cache (admin)" => $admin_base_dir . 'webapp/cache/',
         "Meta (admin)" => $admin_base_dir . 'webapp/meta/',
-        "Cache (api)" => $api_base_dir . 'webapp/cache/',
-        "Meta (api)" => $api_base_dir . 'webapp/meta/',
     );
     
     foreach ($global_folders as $key => $global_folder) {
