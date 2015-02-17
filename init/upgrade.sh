@@ -5,15 +5,15 @@ use Mojavi\Util\StringTools;
 try {
     set_time_limit(0);
     require_once(dirname(__FILE__) . '/lib/Connection.php');
-    require_once(dirname(__FILE__) . '/../admin/webapp/config.php');
-    require_once(dirname(__FILE__) . '/../admin/webapp/lib/Mojavi/mojavi.php');
+    require_once(dirname(__FILE__) . '/../api/webapp/config.php');
+    require_once(dirname(__FILE__) . '/../api/webapp/lib/Mojavi/mojavi.php');
     
     \Mojavi\Controller\Controller::newInstance('\Mojavi\Controller\BasicConsoleController');
     \Mojavi\Controller\Controller::getInstance()->loadContext();
     
     // Setup Vars
     $init_dir = dirname(__FILE__) . "/";
-    $base_dir = $init_dir . "../admin/";
+    $base_dir = $init_dir . "../";
     $docroot_dir = $base_dir . "docroot/";
     $webapp_dir = $base_dir . "webapp/";
     $meta_dir = $webapp_dir . "meta/";
