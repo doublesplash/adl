@@ -345,8 +345,8 @@ class Lead extends CommonForm {
 	 */
 	function send() {
 		try {
-			$url = 'https://app.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
-			#$url = 'https://my.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Live
+			//$url = 'https://app.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
+			$url = 'https://my.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Live
 			
 			
 			$lead_data = $this->getLeadDataList()->toArray();
