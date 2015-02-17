@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+	DocumentRoot /home/adl/api/docroot
+	ServerName api.localhost
+	<Directory /home/adl/api/docroot>
+		AllowOverride all
+	</Directory>
+
+	RewriteEngine On
+	RewriteRule ^/([^.]+)/([^.]+)\.(.*)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)/([^.]+)$ /index.php?module=$1&action=$2 [L,QSA]
+    RewriteRule ^/([^.]+)\.(.*)$ /index.php?module=Default&action=$1 [L,QSA]
+    RewriteRule ^/([^.]+)$ /index.php?module=Default&action=$1 [L,QSA]
+</VirtualHost>

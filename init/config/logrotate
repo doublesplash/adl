@@ -1,0 +1,6 @@
+/var/log/adl/*.log {
+    missingok
+    notifempty
+    sharedscripts
+    endscript
+}
