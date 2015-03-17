@@ -5,7 +5,8 @@ use Mojavi\Form\CommonForm;
 
 class Lead extends CommonForm {
 	
-	const API_TOKEN = '786KQJIGpphLrjcp7EzVEWuCLpdRLTwnQRm0u8Ru3JUsQoeZS4WJbXh0XMO3rGHYKDwiE5IZz5qVokXcJJEDUSaA==';
+	//const API_TOKEN = '786KQJIGpphLrjcp7EzVEWuCLpdRLTwnQRm0u8Ru3JUsQoeZS4WJbXh0XMO3rGHYKDwiE5IZz5qVokXcJJEDUSaA==';
+	const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ';
 	
 	protected $AccessToken;
 	protected $LeadDataList;
@@ -241,7 +242,7 @@ class Lead extends CommonForm {
 	 * @param string
 	 */
 	function setPrimaryLanguage($arg0) {
-		$this->getLeadDataList()->setPrimaryLanguageDesc($arg0);
+		$this->getLeadDataList()->setPrimaryLanguage($arg0);
 	}
 	
 	/**
@@ -451,7 +452,7 @@ class Lead extends CommonForm {
 		$lead->getLeadDataList()->setAdlRequired('N');
 		$lead->getLeadDataList()->setOfficeNote('Mark likes long walks on the beach');
 		$lead->getLeadDataList()->setLeadNotes(array('Mark likes long walks on the beach,Pina Coladas, and getting caught in the rain'));
-		return $lead->send();
+		return $lead->send(true);
 	}
 }
 
@@ -465,14 +466,14 @@ class LeadDataList extends CommonForm {
 	protected $LastName;
 	protected $Gender;
 	protected $MaritalStatusDesc;
-	protected $PrimaryLanguageDesc;
+	protected $PrimaryLanguageDesc = "English";
 	protected $DateOfBirth;
 	protected $SpouseName;
 	protected $SSN;
 	protected $Address1;
 	protected $Address2;
 	protected $City;
-	protected $Statedesc;
+	protected $StateDesc;
 	protected $ZipCode;
 	protected $Country;
 	protected $MobileNumber;
@@ -481,7 +482,7 @@ class LeadDataList extends CommonForm {
 	protected $Fax;
 	protected $EmailId;
 	protected $Reason;
-	protected $GenderPreferenceDesc;
+	protected $GenderPreferenceDesc = "No Preference";
 	protected $Diet;
 	protected $CaregiverNote;
 	protected $ADLRequired;
@@ -493,7 +494,7 @@ class LeadDataList extends CommonForm {
 	protected $FollowUpDays;
 	protected $FollowUp;
 	protected $EmergencyNote;
-	protected $ProgramTypeIdDesc;
+	protected $ProgramTypeIdDesc = "HomeCare";
 	protected $LeadNotes;
 	protected $CompanyReferralCompany;
 	
@@ -547,7 +548,7 @@ class LeadDataList extends CommonForm {
 	 */
 	function getGender() {
 		if (is_null($this->Gender)) {
-			$this->Gender = "";
+			$this->Gender = "M";
 		}
 		return $this->Gender;
 	}
@@ -574,7 +575,7 @@ class LeadDataList extends CommonForm {
 	 */
 	function getMaritalStatus() {
 		if (is_null($this->MaritalStatusDesc)) {
-			$this->MaritalStatusDesc = "";
+			$this->MaritalStatusDesc = "Married";
 		}
 		return $this->MaritalStatusDesc;
 	}
@@ -616,7 +617,7 @@ class LeadDataList extends CommonForm {
 	 */
 	function getDateOfBirth() {
 		if (is_null($this->DateOfBirth)) {
-			$this->DateOfBirth = "now";
+			$this->DateOfBirth = date('m-d-Y');
 		}
 		return $this->DateOfBirth;
 	}
@@ -786,7 +787,7 @@ class LeadDataList extends CommonForm {
 	 */
 	function getCountry() {
 		if (is_null($this->Country)) {
-			$this->Country = "";
+			$this->Country = "US";
 		}
 		return $this->Country;
 	}
@@ -936,7 +937,7 @@ class LeadDataList extends CommonForm {
 	 */
 	function getGenderPreference() {
 		if (is_null($this->GenderPreferenceDesc)) {
-			$this->GenderPreferenceDesc = "";
+			$this->GenderPreferenceDesc = "No Preference";
 		}
 		return $this->GenderPreferenceDesc;
 	}
@@ -1188,7 +1189,7 @@ class LeadDataList extends CommonForm {
 	 */
 	function getProgramTypeId() {
 		if (is_null($this->ProgramTypeIdDesc)) {
-			$this->ProgramTypeIdDesc = "";
+			$this->ProgramTypeIdDesc = "HomeCare";
 		}
 		return $this->ProgramTypeIdDesc;
 	}
@@ -1281,7 +1282,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getReferralCompanyName() {
 		if (is_null($this->referral_company_name)) {
-			$this->referral_company_name = "";
+			$this->referral_company_name = "Amada";
 		}
 		return $this->referral_company_name;
 	}
@@ -1302,7 +1303,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getAddress1() {
 		if (is_null($this->Address1)) {
-			$this->Address1 = "";
+			$this->Address1 = "901 Calle Amanecer";
 		}
 		return $this->Address1;
 	}
@@ -1323,7 +1324,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getCity() {
 		if (is_null($this->City)) {
-			$this->City = "";
+			$this->City = "San Clemente";
 		}
 		return $this->City;
 	}
@@ -1344,7 +1345,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getState() {
 		if (is_null($this->StateDesc)) {
-			$this->StateDesc = "";
+			$this->StateDesc = "CA";
 		}
 		return $this->StateDesc;
 	}
@@ -1365,7 +1366,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getZipCode() {
 		if (is_null($this->ZipCode)) {
-			$this->ZipCode = "";
+			$this->ZipCode = "92673";
 		}
 		return $this->ZipCode;
 	}
@@ -1386,7 +1387,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getCountry() {
 		if (is_null($this->Country)) {
-			$this->Country = "";
+			$this->Country = "US";
 		}
 		return $this->Country;
 	}
@@ -1407,7 +1408,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getOfficeNumber() {
 		if (is_null($this->OfficeNumber)) {
-			$this->OfficeNumber = "";
+			$this->OfficeNumber = "(877) 442-6232";
 		}
 		return $this->OfficeNumber;
 	}
@@ -1491,7 +1492,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getEmailAddress() {
 		if (is_null($this->email_address)) {
-			$this->email_address = "";
+			$this->email_address = "jeremy.b@amadaseniorcare.com";
 		}
 		return $this->email_address;
 	}
@@ -1512,7 +1513,7 @@ class CompanyReferral extends CommonForm {
 	 */
 	function getWebsite() {
 		if (is_null($this->website)) {
-			$this->website = "";
+			$this->website = "http://www.amadaseniorcare.com";
 		}
 		return $this->website;
 	}

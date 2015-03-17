@@ -5,8 +5,8 @@ use Mojavi\Util\StringTools;
 try {
     set_time_limit(0);
     require_once(dirname(__FILE__) . '/lib/Connection.php');
-    require_once(dirname(__FILE__) . '/../api/webapp/config.php');
-    require_once(dirname(__FILE__) . '/../api/webapp/lib/Mojavi/mojavi.php');
+    require_once(dirname(__FILE__) . '/../webapp/config.php');
+    require_once(dirname(__FILE__) . '/../webapp/lib/Mojavi/mojavi.php');
     
     \Mojavi\Controller\Controller::newInstance('\Mojavi\Controller\BasicConsoleController');
     \Mojavi\Controller\Controller::getInstance()->loadContext();
