@@ -6,7 +6,7 @@ use Mojavi\Form\CommonForm;
 class Lead extends CommonForm {
 	
 	//const API_TOKEN = '786KQJIGpphLrjcp7EzVEWuCLpdRLTwnQRm0u8Ru3JUsQoeZS4WJbXh0XMO3rGHYKDwiE5IZz5qVokXcJJEDUSaA==';
-	const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ';
+	const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ==';
 	
 	protected $AccessToken;
 	protected $LeadDataList;
@@ -347,7 +347,8 @@ class Lead extends CommonForm {
 	function send($use_staging_url = false) {
 		try {
 			if ($use_staging_url) {
-				$url = 'https://app.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
+				#$url = 'https://app.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
+				$url = 'https://adl-staging.kinnser.net/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
 			} else {
 				$url = 'https://my.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Live
 			}
@@ -430,7 +431,7 @@ class Lead extends CommonForm {
 		$lead->setAccessToken(self::API_TOKEN);
 		$lead->getLeadDataList()->setFirstName('Mark');
 		$lead->getLeadDataList()->setLastName('Hobson');
-		$lead->getLeadDataList()->setSsn('222-22-2222');
+		$lead->getLeadDataList()->setSsn('222-222-2222');
 		$lead->getLeadDataList()->setAddress1('124 Test Street');
 		$lead->getLeadDataList()->setCity('Los Angeles');
 		$lead->getLeadDataList()->setState('CA');
@@ -452,7 +453,7 @@ class Lead extends CommonForm {
 		$lead->getLeadDataList()->setAdlRequired('N');
 		$lead->getLeadDataList()->setOfficeNote('Mark likes long walks on the beach');
 		$lead->getLeadDataList()->setLeadNotes(array('Mark likes long walks on the beach,Pina Coladas, and getting caught in the rain'));
-		return $lead->send(true);
+		return $lead->send();
 	}
 }
 
