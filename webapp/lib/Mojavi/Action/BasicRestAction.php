@@ -34,12 +34,7 @@ class BasicRestAction extends BasicAction {
         $input_form = $this->getInputForm();
         $input_form->populate($this->getContext()->getRequest()->getParameters());
         if ($this->getContext()->getRequest()->getMethod() == Request::POST) {
-        	if ($input_form->getId() > 0) {
-        		// Sometimes updates need to come through the POST
-        		$ajax_form = $this->executePut($input_form);
-        	} else {
-            	$ajax_form = $this->executePost($input_form);
-        	}
+	        $ajax_form = $this->executePost($input_form);
         } else if ($this->getContext()->getRequest()->getMethod() == Request::PUT) {
             $ajax_form = $this->executePut($input_form);
         } else if ($this->getContext()->getRequest()->getMethod() == Request::DELETE) {
