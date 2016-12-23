@@ -1,12 +1,13 @@
 <?php
 namespace Adl;
 
-use Mojavi\Form\CommonForm;
+use Mojavi\Form\MojaviForm;
+
 /**
  * Stores lead data
  * @author hobby
  */
-class Lead extends CommonForm {
+class Lead extends MojaviForm {
 
 	protected $FirstName;
 	protected $LastName;

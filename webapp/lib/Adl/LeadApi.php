@@ -1,21 +1,22 @@
 <?php
 namespace Adl;
 
-use Mojavi\Form\CommonForm;
+use Mojavi\Form\MojaviForm;
 use Mojavi\Util\StringTools;
 use Mojavi\Logging\LoggerManager;
 
-class LeadApi extends CommonForm {
+class LeadApi extends MojaviForm {
 	
 	//const API_TOKEN = '786KQJIGpphLrjcp7EzVEWuCLpdRLTwnQRm0u8Ru3JUsQoeZS4WJbXh0XMO3rGHYKDwiE5IZz5qVokXcJJEDUSaA==';
 	//const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ==';
 	const API_TOKEN = 'b0DudF+10wrIbOqo3prX8sdoIwNlGtmTwsOZgs9Civ5wPVNoL9QR9mhe7pQwzK3hqyCFJpv94Tl4Eq966TfYUA==';
-	
+
+	protected $LeadId;
 	protected $AccessToken;
 	protected $Lead;
 	protected $ReturnStatus;
 	protected $Result;
-	
+
 	/**
 	 * Shortcut to set the firstname
 	 * @param string
@@ -302,6 +303,28 @@ class LeadApi extends CommonForm {
 		}
 		return $this;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getLeadId()
+	{
+		if (is_null($this->LeadId)) {
+			$this->LeadId = "";
+		}
+		return $this->LeadId;
+	}
+
+	/**
+	 * @param mixed $LeadId
+	 * @return LeadApi
+	 */
+	public function setLeadId($LeadId)
+	{
+		$this->LeadId = $LeadId;
+		$this->addModifiedColumn("LeadId");
+		return $this;
+	}
 	
 	/**
 	 * Returns the ReturnStatus
@@ -398,7 +421,7 @@ class LeadApi extends CommonForm {
 							if (strpos($data_obj['AcceptLeadJsonResult']['ReturnList'][0]['ReturnStatus'], 'Lead saved') !== false) {
 								// Try to parse out the new lead id
 								$insert_id = intval(substr($data_obj['AcceptLeadJsonResult']['ReturnList'][0]['ReturnStatus'], strlen('Lead saved on Id : ')));
-								$this->setId($insert_id);
+								$this->setLeadId($insert_id);
 								$this->setReturnStatus($data_obj['AcceptLeadJsonResult']['ReturnList'][0]['ReturnStatus']);
 								$this->setResult(true);
 							} else {

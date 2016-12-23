@@ -46,7 +46,7 @@ class TestPostAction extends BasicRestAction {
     	$ajax_form = new BasicAjaxForm();
     	// First verify that we can insert this post
         $input_form->send(true);
-		$ajax_form->setInsertId($input_form->getId());
+		$ajax_form->setInsertId($input_form->getLeadId());
 		$ajax_form->setRowsAffected(1);
 		$ajax_form->setRecord($input_form);
         return $ajax_form;

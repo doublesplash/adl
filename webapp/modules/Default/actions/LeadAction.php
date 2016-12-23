@@ -1,22 +1,22 @@
 <?php
 use Mojavi\Action\BasicRestAction;
 use Mojavi\Logging\LoggerManager;
-use Adl\CaregiverApi;
+use Adl\LeadApi;
 use Mojavi\Form\BasicAjaxForm;
 /**
- * CaregiverAction handles post requests
+ * PostAction handles post requests
  *
  * @author Mark Hobson
  * @since 11/27/2007 7:21 pm
  */
-class PostAction extends BasicRestAction {
+class LeadAction extends BasicRestAction {
 
     /**
      * Returns the input form to use for this rest action
      * @return  BlackListedDomain
      */
     function getInputForm() {
-        return new \Adl\CaregiverApi();
+        return new LeadApi();
     }
 	
     /**
@@ -45,7 +45,7 @@ class PostAction extends BasicRestAction {
     	$ajax_form = new BasicAjaxForm();
     	// First verify that we can insert this post
         $input_form->send();
-		$ajax_form->setInsertId($input_form->getCaregiverId());
+		$ajax_form->setInsertId($input_form->getLeadId());
 		$ajax_form->setRowsAffected(1);
 		$ajax_form->setRecord($input_form);
         return $ajax_form;

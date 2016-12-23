@@ -1,15 +1,16 @@
 <?php
 namespace Adl;
 
-use Mojavi\Form\CommonForm;
+use Mojavi\Form\MojaviForm;
 use Mojavi\Util\StringTools;
 use Mojavi\Logging\LoggerManager;
 
-class CaregiverApi extends CommonForm {
+class CaregiverApi extends MojaviForm {
 
 	//const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ==';
 	const API_TOKEN = 'b0DudF+10wrIbOqo3prX8sdoIwNlGtmTwsOZgs9Civ5wPVNoL9QR9mhe7pQwzK3hqyCFJpv94Tl4Eq966TfYUA==';
 
+	protected $CaregiverId;
 	protected $AccessToken;
 	protected $Caregiver;
 	protected $ReturnStatus;
@@ -34,6 +35,28 @@ class CaregiverApi extends CommonForm {
 	function setAccessToken($arg0) {
 		$this->AccessToken = $arg0;
 		$this->addModifiedColumn('AccessToken');
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCaregiverId()
+	{
+		if (is_null($this->CaregiverId)) {
+			$this->CaregiverId = "";
+		}
+		return $this->CaregiverId;
+	}
+
+	/**
+	 * @param mixed $CaregiverId
+	 * @return CaregiverApi
+	 */
+	public function setCaregiverId($CaregiverId)
+	{
+		$this->CaregiverId = $CaregiverId;
+		$this->addModifiedColumn("CaregiverId");
 		return $this;
 	}
 
@@ -156,7 +179,7 @@ class CaregiverApi extends CommonForm {
 						if (isset($data_obj['CaregiverResult']['CaregiverId'])) {
 							// Try to parse out the new lead id
 							$insert_id = $data_obj['CaregiverResult']['CaregiverId'];
-							$this->setId($insert_id);
+							$this->setCaregiverId($insert_id);
 							$this->setReturnStatus($data_obj['CaregiverResult']['Message']);
 							$this->setResult(true);
 						} else {

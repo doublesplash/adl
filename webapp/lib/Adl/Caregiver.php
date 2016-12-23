@@ -1,12 +1,13 @@
 <?php
 namespace Adl;
 
-use Mojavi\Form\CommonForm;
+use Mojavi\Form\MojaviForm;
+
 /**
  * Stores caregiver data
  * @author hobby
  */
-class Caregiver extends CommonForm {
+class Caregiver extends MojaviForm  {
 
 	const STATUS_ACTIVE = 10004;
 	const STATUS_DISQUALIFIED = 10324;

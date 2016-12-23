@@ -46,7 +46,7 @@ class TestCaregiverAction extends BasicRestAction {
     	$ajax_form = new BasicAjaxForm();
     	// First verify that we can insert this post
         $caregiver = $input_form->test();
-		$ajax_form->setInsertId($caregiver->getId());
+		$ajax_form->setInsertId($caregiver->getCaregiverId());
 		$ajax_form->setRowsAffected(1);
 		$ajax_form->setRecord(array('message' => $caregiver->getReturnStatus()));
         return $ajax_form;

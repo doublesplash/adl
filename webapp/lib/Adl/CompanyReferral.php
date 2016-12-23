@@ -1,13 +1,13 @@
 <?php
 namespace Adl;
 
-use Mojavi\Form\CommonForm;
+use Mojavi\Form\MojaviForm;
 /**
  * CompanyReferral stores referral information
  * @author hobby
  *
  */
-class CompanyReferral extends CommonForm {
+class CompanyReferral extends MojaviForm {
 
 	protected $referral_company_name;
 	protected $Address1;
