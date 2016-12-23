@@ -17,6 +17,214 @@ class CaregiverApi extends MojaviForm {
 	protected $Result;
 
 	/**
+	 * Shortcut to set the firstname
+	 * @param string
+	 */
+	function setFirstName($arg0) {
+		$this->getCaregiver()->setFirstname($arg0);
+	}
+
+	/**
+	 * Shortcut to set the lastname
+	 * @param string
+	 */
+	function setLastName($arg0) {
+		$this->getCaregiver()->setLastname($arg0);
+	}
+
+	/**
+	 * Shortcut to set the address
+	 * @param string
+	 */
+	function setAddress($arg0) {
+		$this->getCaregiver()->setAddress($arg0);
+	}
+
+	/**
+	 * Shortcut to set the city
+	 * @param string
+	 */
+	function setCity($arg0) {
+		$this->getCaregiver()->setCity($arg0);
+	}
+
+	/**
+	 * Shortcut to set the state
+	 * @param string
+	 */
+	function setStateId($arg0) {
+		$this->getCaregiver()->setState($arg0);
+	}
+
+	/**
+	 * Shortcut to set the state
+	 * @param string
+	 */
+	function setState($arg0) {
+		$this->getCaregiver()->setState($arg0);
+	}
+
+	/**
+	 * Shortcut to set the postal code
+	 * @param string
+	 */
+	function setZipCode($arg0) {
+		$this->getCaregiver()->setZipCode($arg0);
+	}
+
+	/**
+	 * Shortcut to set the country
+	 * @param string
+	 */
+	function setCountryId($arg0) {
+		$this->getCaregiver()->setCountry($arg0);
+	}
+
+	/**
+	 * Shortcut to set the country
+	 * @param string
+	 */
+	function setCountry($arg0) {
+		$this->getCaregiver()->setCountry($arg0);
+	}
+
+	/**
+	 * Shortcut to set the gender
+	 * @param string
+	 */
+	function setGender($arg0) {
+		$this->getCaregiver()->setGender($arg0);
+	}
+
+	/**
+	 * Shortcut to set the ssn
+	 * @param string
+	 */
+	function setSsn($arg0) {
+		$this->getCaregiver()->setSSN($arg0);
+	}
+
+	/**
+	 * Shortcut to set the minimum hourly rate
+	 * @param string
+	 */
+	function setMinHourlyRate($arg0) {
+		$this->getCaregiver()->setMinHourlyRate($arg0);
+	}
+
+	/**
+	 * Shortcut to set the email
+	 * @param string
+	 */
+	function setEmailId($arg0) {
+		$this->getCaregiver()->setEmailId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the email
+	 * @param string
+	 */
+	function setEmail($arg0) {
+		$this->getCaregiver()->setEmailId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the mobile number
+	 * @param string
+	 */
+	function setMobileNumber($arg0) {
+		$this->getCaregiver()->setMobileNumber($arg0);
+	}
+
+	/**
+	 * Shortcut to set the work area
+	 * @param string
+	 */
+	function setWorkArea($arg0) {
+		$this->getCaregiver()->setWorkArea($arg0);
+	}
+
+	/**
+	 * Shortcut to set the total experience
+	 * @param string
+	 */
+	function setTotalExperience($arg0) {
+		$this->getCaregiver()->setTotalExperience($arg0);
+	}
+
+	/**
+	 * Shortcut to set the caregiver certifications
+	 * @param string
+	 */
+	function setCaregiverCertifications($arg0) {
+		$this->getCaregiver()->setCaregiverCertifications($arg0);
+	}
+
+	/**
+	 * Shortcut to set the date of birth
+	 * @param string
+	 */
+	function setDateOfBirth($arg0) {
+		$this->getCaregiver()->setDateOfBirth($arg0);
+	}
+
+	/**
+	 * Shortcut to set the caregiver languages
+	 * @param string
+	 */
+	function setCaregiverLanguages($arg0) {
+		$this->getCaregiver()->setCaregiverLanguages($arg0);
+	}
+
+	/**
+	 * Shortcut to set the caregiver specializations
+	 * @param string
+	 */
+	function setCaregiverSpecializations($arg0) {
+		$this->getCaregiver()->setCaregiverSpecializations($arg0);
+	}
+
+	/**
+	 * Shortcut to set the primary language
+	 * @param string
+	 */
+	function setPrimaryLanguageId($arg0) {
+		$this->getCaregiver()->setPrimaryLanguageId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the primary language
+	 * @param string
+	 */
+	function setPrimaryLanguage($arg0) {
+		$this->getCaregiver()->setPrimaryLanguageId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the caregiver notes
+	 * @param string
+	 */
+	function setCaregiverNote($arg0) {
+		$this->getCaregiver()->setCaregiverNote($arg0);
+	}
+
+	/**
+	 * Shortcut to set the status
+	 * @param string
+	 */
+	function setStatusId($arg0) {
+		$this->getCaregiver()->setStatusId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the status
+	 * @param string
+	 */
+	function setStatus($arg0) {
+		$this->getCaregiver()->setStatus($arg0);
+	}
+
+	/**
 	 * Returns the AccessToken
 	 * @return string
 	 */
@@ -44,7 +252,7 @@ class CaregiverApi extends MojaviForm {
 	public function getCaregiverId()
 	{
 		if (is_null($this->CaregiverId)) {
-			$this->CaregiverId = "";
+			$this->CaregiverId = $this->getCaregiver()->getCaregiverID();
 		}
 		return $this->CaregiverId;
 	}
@@ -56,6 +264,7 @@ class CaregiverApi extends MojaviForm {
 	public function setCaregiverId($CaregiverId)
 	{
 		$this->CaregiverId = $CaregiverId;
+		$this->getCaregiver()->setCaregiverID($CaregiverId);
 		$this->addModifiedColumn("CaregiverId");
 		return $this;
 	}
