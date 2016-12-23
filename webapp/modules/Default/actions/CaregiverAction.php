@@ -9,14 +9,14 @@ use Mojavi\Form\BasicAjaxForm;
  * @author Mark Hobson
  * @since 11/27/2007 7:21 pm
  */
-class PostAction extends BasicRestAction {
+class CaregiverAction extends BasicRestAction {
 
     /**
      * Returns the input form to use for this rest action
      * @return  BlackListedDomain
      */
     function getInputForm() {
-        return new \Adl\CaregiverApi();
+        return new CaregiverApi();
     }
 	
     /**
