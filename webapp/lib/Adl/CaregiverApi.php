@@ -61,7 +61,7 @@ class CaregiverApi extends MojaviForm {
 	 * @param string
 	 */
 	function setState($arg0) {
-		$this->getCaregiver()->setState($arg0);
+		$this->getCaregiver()->setStateId($arg0);
 	}
 
 	/**
@@ -77,7 +77,7 @@ class CaregiverApi extends MojaviForm {
 	 * @param string
 	 */
 	function setCountryId($arg0) {
-		$this->getCaregiver()->setCountry($arg0);
+		$this->getCaregiver()->setCountryId($arg0);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class CaregiverApi extends MojaviForm {
 	 * @param string
 	 */
 	function setCountry($arg0) {
-		$this->getCaregiver()->setCountry($arg0);
+		$this->getCaregiver()->setCountryId($arg0);
 	}
 
 	/**
