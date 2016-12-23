@@ -383,16 +383,22 @@ class CaregiverApi extends MojaviForm {
 				$data_obj = json_decode($data, true);
 				if (isset($data_obj['CaregiverResult'])) {
 					$this->getCaregiver()->setCaregiverID($data_obj['CaregiverResult']['CaregiverId']);
-					if (isset($data_obj['CaregiverResult']['StatusCode']) && $data_obj['CaregiverResult']['StatusCode'] == 'OK') {
-						// Request was successful
-						if (isset($data_obj['CaregiverResult']['CaregiverId'])) {
-							// Try to parse out the new lead id
-							$insert_id = $data_obj['CaregiverResult']['CaregiverId'];
-							$this->setCaregiverId($insert_id);
-							$this->setReturnStatus($data_obj['CaregiverResult']['Message']);
-							$this->setResult(true);
+					if (isset($data_obj['CaregiverResult']['StatusCode'])) {
+						if ($data_obj['CaregiverResult']['StatusCode'] == 'OK') {
+							// Request was successful
+							if (isset($data_obj['CaregiverResult']['CaregiverId'])) {
+								// Try to parse out the new lead id
+								$insert_id = $data_obj['CaregiverResult']['CaregiverId'];
+								$this->setCaregiverId($insert_id);
+								$this->setReturnStatus($data_obj['CaregiverResult']['Message']);
+								$this->setResult(true);
+							} else {
+								throw new \Exception('Cannot find CaregiverId field: ' . var_export($data_obj, true));
+							}
+						} else if (isset($data_obj['CaregiverResult']['Message'])) {
+							throw new \Exception($data_obj['CaregiverResult']['Message']);
 						} else {
-							throw new \Exception('Cannot find Message field: ' . var_export($data_obj, true));
+							throw new \Exception('Cannot find StatusCode field in result or StatusCode is not OK');
 						}
 					} else {
 						throw new \Exception('Cannot find StatusCode field in result or StatusCode is not OK');
