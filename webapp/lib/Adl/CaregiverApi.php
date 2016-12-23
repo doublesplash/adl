@@ -221,7 +221,7 @@ class CaregiverApi extends MojaviForm {
 	 * @param string
 	 */
 	function setStatus($arg0) {
-		$this->getCaregiver()->setStatus($arg0);
+		$this->getCaregiver()->setStatusId($arg0);
 	}
 
 	/**
