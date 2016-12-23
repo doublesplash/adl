@@ -145,7 +145,7 @@ class MojaviForm extends MojaviObject {
     /**
      * Returns the errors object.  Normally you want to setup an error object beforehand and pass
      * it to all the forms and models that you use so that you can collect all the errors
-     * @return Errors
+     * @return \Mojavi\Error\Errors
      */
     function getErrors() {
         return Controller::getInstance()->getContext()->getErrors();

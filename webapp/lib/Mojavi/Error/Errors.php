@@ -44,7 +44,7 @@ class Errors extends MojaviObject {
      * Add an error to the list of errors.  Takes a keyname for the first argument and
      * an Error Object containing the error as the second argument.
      * @param string $arg0 String key used to identify this error object
-     * @param Error $arg1 Error Object containing error message
+     * @param Error|string $arg1 Error Object containing error message
      */
      function addError($arg0,$arg1) {
         /*

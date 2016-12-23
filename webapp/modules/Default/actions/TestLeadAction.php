@@ -1,6 +1,5 @@
 <?php
 use Mojavi\Action\BasicRestAction;
-use Mojavi\Logging\LoggerManager;
 use Adl\LeadApi;
 use Mojavi\Form\BasicAjaxForm;
 /**
@@ -9,7 +8,7 @@ use Mojavi\Form\BasicAjaxForm;
  * @author Mark Hobson
  * @since 11/27/2007 7:21 pm
  */
-class PostAction extends BasicRestAction {
+class TestLeadAction extends BasicRestAction {
 
     /**
      * Returns the input form to use for this rest action
@@ -44,7 +43,7 @@ class PostAction extends BasicRestAction {
     function executePost($input_form) {
     	$ajax_form = new BasicAjaxForm();
     	// First verify that we can insert this post
-        $input_form->send();
+        $input_form->test();
 		$ajax_form->setInsertId($input_form->getId());
 		$ajax_form->setRowsAffected(1);
 		$ajax_form->setRecord($input_form);

@@ -1,10 +1,10 @@
 <?php
 use Mojavi\Action\BasicRestAction;
 use Mojavi\Logging\LoggerManager;
-use Adl\LeadApi;
+use Adl\CaregiverApi;
 use Mojavi\Form\BasicAjaxForm;
 /**
- * PostAction handles post requests
+ * CaregiverAction handles post requests
  *
  * @author Mark Hobson
  * @since 11/27/2007 7:21 pm
@@ -16,7 +16,7 @@ class PostAction extends BasicRestAction {
      * @return  BlackListedDomain
      */
     function getInputForm() {
-        return new LeadApi();
+        return new \Adl\CaregiverApi();
     }
 	
     /**

@@ -1,7 +1,6 @@
 <?php
 use Mojavi\Action\BasicRestAction;
-use Mojavi\Logging\LoggerManager;
-use Adl\Lead;
+use Adl\LeadApi;
 use Mojavi\Form\BasicAjaxForm;
 /**
  * PostAction handles post requests
@@ -16,7 +15,7 @@ class TestPostAction extends BasicRestAction {
      * @return  BlackListedDomain
      */
     function getInputForm() {
-        return new Lead();
+        return new LeadApi();
     }
 	
     /**
@@ -30,6 +29,7 @@ class TestPostAction extends BasicRestAction {
 
 	/**
      * Perform any execution code for this action
+	 * @param $input_form Form
      * @return integer (View::SUCCESS, View::ERROR, View::NONE)
      */
     public function executeGet($input_form)
@@ -39,6 +39,7 @@ class TestPostAction extends BasicRestAction {
     
 	/**
      * Executes a POST request
+	 * @param $input_form Form
      * @return \Mojavi\Form\BasicAjaxForm
      */
     function executePost($input_form) {
