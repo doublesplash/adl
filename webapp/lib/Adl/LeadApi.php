@@ -9,7 +9,7 @@ class LeadApi extends MojaviForm {
 	
 	//const API_TOKEN = '786KQJIGpphLrjcp7EzVEWuCLpdRLTwnQRm0u8Ru3JUsQoeZS4WJbXh0XMO3rGHYKDwiE5IZz5qVokXcJJEDUSaA==';
 	//const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ==';
-	//const API_TOKEN = 'b0DudF+10wrIbOqo3prX8sdoIwNlGtmTwsOZgs9Civ5wPVNoL9QR9mhe7pQwzK3hqyCFJpv94Tl4Eq966TfYUA==';
+	const API_TOKEN = 'b0DudF+10wrIbOqo3prX8sdoIwNlGtmTwsOZgs9Civ5wPVNoL9QR9mhe7pQwzK3hqyCFJpv94Tl4Eq966TfYUA==';
 
 	protected $LeadId;
 	protected $AccessToken;
@@ -263,7 +263,7 @@ class LeadApi extends MojaviForm {
 	 */
 	function getAccessToken() {
 		if (is_null($this->AccessToken)) {
-			$this->AccessToken = self::API_TOKEN;
+			$this->AccessToken = "";
 		}
 		return $this->AccessToken;
 	}

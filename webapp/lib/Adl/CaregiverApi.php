@@ -238,7 +238,7 @@ class CaregiverApi extends MojaviForm {
 	 */
 	function getAccessToken() {
 		if (is_null($this->AccessToken)) {
-			$this->AccessToken = self::API_TOKEN;
+			$this->AccessToken = "";
 		}
 		return $this->AccessToken;
 	}
