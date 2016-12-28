@@ -25,6 +25,7 @@ class Caregiver extends MojaviForm  {
 
 	const COUNTRY_US = 1;
 	const COUNTRY_CANADA = 2;
+	const COUNTRY_AUSTRALIA = 3;
 
 	protected $CaregiverID;
 	protected $FirstName;
@@ -125,7 +126,7 @@ class Caregiver extends MojaviForm  {
 	public function getDateOfBirth()
 	{
 		if (is_null($this->DateOfBirth)) {
-			$this->DateOfBirth = "";
+			$this->DateOfBirth = "01-01-1900";
 		}
 		return $this->DateOfBirth;
 	}
@@ -147,7 +148,7 @@ class Caregiver extends MojaviForm  {
 	public function getPrimaryLanguageId()
 	{
 		if (is_null($this->PrimaryLanguageId)) {
-			$this->PrimaryLanguageId = "";
+			$this->PrimaryLanguageId = 10059;
 		}
 		return $this->PrimaryLanguageId;
 	}
@@ -158,7 +159,91 @@ class Caregiver extends MojaviForm  {
 	 */
 	public function setPrimaryLanguageId($PrimaryLanguageId)
 	{
-		$this->PrimaryLanguageId = $PrimaryLanguageId;
+		if (strtolower(trim($PrimaryLanguageId)) == "akan") {
+			$this->PrimaryLanguageId = 10481;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "amharic") {
+			$this->PrimaryLanguageId = 10485;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "arabic") {
+			$this->PrimaryLanguageId = 10219;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "assyrian") {
+			$this->PrimaryLanguageId = 10352;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "bosnian") {
+			$this->PrimaryLanguageId = 10460;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "cambodian") {
+			$this->PrimaryLanguageId = 10391;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "chinese-cantonese") {
+			$this->PrimaryLanguageId = 10319;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "chinese-mandarin") {
+			$this->PrimaryLanguageId = 10318;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "croatian") {
+			$this->PrimaryLanguageId = 10461;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "english") {
+			$this->PrimaryLanguageId = 10059;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "farsi") {
+			$this->PrimaryLanguageId = 10272;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "fijian") {
+			$this->PrimaryLanguageId = 10392;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "french") {
+			$this->PrimaryLanguageId = 10349;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "german") {
+			$this->PrimaryLanguageId = 10061;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "greek") {
+			$this->PrimaryLanguageId = 10218;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "hebrew") {
+			$this->PrimaryLanguageId = 10217;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "hindi") {
+			$this->PrimaryLanguageId = 10360;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "hmong") {
+			$this->PrimaryLanguageId = 10457;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "ilokano") {
+			$this->PrimaryLanguageId = 10393;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "italian") {
+			$this->PrimaryLanguageId = 10190;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "japanese") {
+			$this->PrimaryLanguageId = 10323;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "khmer") {
+			$this->PrimaryLanguageId = 10458;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "korean") {
+			$this->PrimaryLanguageId = 10322;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "laotian") {
+			$this->PrimaryLanguageId = 10394;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "micronessian") {
+			$this->PrimaryLanguageId = 10395;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "nigerian") {
+			$this->PrimaryLanguageId = 10482;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "other") {
+			$this->PrimaryLanguageId = 10397;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "pashtun") {
+			$this->PrimaryLanguageId = 10350;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "persian") {
+			$this->PrimaryLanguageId = 10351;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "polish") {
+			$this->PrimaryLanguageId = 10353;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "portuguese") {
+			$this->PrimaryLanguageId = 10471;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "romanian") {
+			$this->PrimaryLanguageId = 10355;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "russian") {
+			$this->PrimaryLanguageId = 10191;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "samoan") {
+			$this->PrimaryLanguageId = 10396;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "spanish") {
+			$this->PrimaryLanguageId = 10060;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "tagalog") {
+			$this->PrimaryLanguageId = 10192;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "thai") {
+			$this->PrimaryLanguageId = 10329;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "twi") {
+			$this->PrimaryLanguageId = 10483;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "ukrainian") {
+			$this->PrimaryLanguageId = 10354;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "urdu") {
+			$this->PrimaryLanguageId = 10484;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "vietnamese") {
+			$this->PrimaryLanguageId = 10328;
+		} else {
+			$this->PrimaryLanguageId = $PrimaryLanguageId;
+		}
 		$this->addModifiedColumn("PrimaryLanguageId");
 		return $this;
 	}
@@ -315,6 +400,45 @@ class Caregiver extends MojaviForm  {
 		} else if (strtolower(trim($StateId)) == "nunavut") {
 			$this->StateId = "NU";
 			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "ontario") {
+			$this->StateId = "ON";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "prince edward island") {
+			$this->StateId = "PE";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "quebec") {
+			$this->StateId = "QC";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "saskatchewan") {
+			$this->StateId = "SK";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "yukon") {
+			$this->StateId = "YT";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "new south wales") {
+			$this->StateId = "NSW";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "queensland") {
+			$this->StateId = "QLD";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "south australia") {
+			$this->StateId = "SA";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "tasmania") {
+			$this->StateId = "TAS";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "victoria") {
+			$this->StateId = "VIC";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "western australia") {
+			$this->StateId = "WA";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "australian capital territory") {
+			$this->StateId = "ACT";
+			$this->setCountryId(3);
+		} else if (strtolower(trim($StateId)) == "northern territory") {
+			$this->StateId = "NT";
+			$this->setCountryId(3);
 		} else {
 			$this->StateId = $StateId;
 		}
@@ -351,6 +475,10 @@ class Caregiver extends MojaviForm  {
 			$this->CountryId = self::COUNTRY_CANADA;
 		} else if (strtolower(trim($CountryId)) == "canada") {
 			$this->CountryId = self::COUNTRY_CANADA;
+		} else if (strtolower(trim($CountryId)) == "au") {
+			$this->CountryId = self::COUNTRY_AUSTRALIA;
+		} else if (strtolower(trim($CountryId)) == "australia") {
+			$this->CountryId = self::COUNTRY_AUSTRALIA;
 		} else {
 			$this->CountryId = $CountryId;
 		}
@@ -510,7 +638,7 @@ class Caregiver extends MojaviForm  {
 	public function getSSN()
 	{
 		if (is_null($this->SSN)) {
-			$this->SSN = "";
+			$this->SSN = "000-00-0000";
 		}
 		return $this->SSN;
 	}
