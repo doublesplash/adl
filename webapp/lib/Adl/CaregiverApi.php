@@ -348,21 +348,23 @@ class CaregiverApi extends MojaviForm {
 
 	function send() {
 		$attempts = 0;
-		while ($attempts < 3) {
-			try {
-				if (($result = $this->sendToAdl()) === false) {
+		try {
+			while ($attempts < 3) {
+				if ($this->sendToAdl() === false) {
 					$attempts++;
 				} else {
-					$attempts = 4;
+					return $this;
 				}
-			} catch (\Exception $e) {
-				$this->getErrors()->addError('error', $e->getMessage());
-				$this->setReturnStatus($e->getMessage());
-				$this->setResult(false);
+				sleep(floor(rand(1, 5)));
 			}
-			sleep(floor(rand(1,5)));
+			// If we get here, it's because ADL Server is offline
+			throw new \Exception('Cannot communicate with ADL Server, please try your request again');
+		} catch (\Exception $e) {
+			$this->getErrors()->addError('error', $e->getMessage());
+			$this->setReturnStatus($e->getMessage());
+			$this->setResult(false);
 		}
-		return $result;
+		return $this;
 	}
 
 	/**
