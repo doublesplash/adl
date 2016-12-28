@@ -369,23 +369,42 @@ class LeadApi extends MojaviForm {
 		$this->addModifiedColumn('Result');
 		return $this;
 	}
+
+	/**
+	 * Sends a json request to ADL
+	 * @return string
+	 */
+	function send() {
+		$attempts = 0;
+		try {
+			while ($attempts < 3) {
+				if ($this->sendToAdl() === false) {
+					$attempts++;
+				} else {
+					return $this;
+				}
+				sleep(floor(rand(1, 5)));
+			}
+			// If we get here, it's because ADL Server is offline
+			throw new \Exception('We did not receive confirmation that this client record was transferred to ADLWare.  You can try your request again after checking if your lead is in ADLWare under Client -> Leads -> Lead List');
+		} catch (\Exception $e) {
+			$this->getErrors()->addError('error', $e->getMessage());
+			$this->setReturnStatus($e->getMessage());
+			$this->setResult(false);
+		}
+		return $this;
+	}
 	
 	/**
 	 * Sends a json request to ADL
 	 * @param $use_staging_url boolean
 	 * @return string
 	 */
-	function send($use_staging_url = false) {
+	private function sendToAdl() {
 		$data = null;
 		$params = array();
 		try {
-			if ($use_staging_url) {
-				#$url = 'https://app.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
-				$url = 'https://adl-staging.kinnser.net/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
-			} else {
-				$url = 'https://my.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Live
-			}
-			
+			$url = 'https://my.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Live
 			
 			$lead_data = $this->getLead()->toArray();
 			unset($lead_data['id']);
@@ -408,7 +427,7 @@ class LeadApi extends MojaviForm {
 			$data = curl_exec($ch);
 						
 			if ($data === false) {
-				throw new \Exception('We did not receive confirmation that this client record was transferred to ADLWare.  You can try your request again after checking if your lead is in ADLWare under Client -> Leads -> Lead List');
+				return false;
 			} else if (strpos($data, 'Request Error') !== false) {
 				throw new \Exception(strip_tags(nl2br(StringTools::getStringBetween($data, '<div id="content">', '</div>'))));
 			} else {

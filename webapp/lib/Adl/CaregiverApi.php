@@ -346,6 +346,10 @@ class CaregiverApi extends MojaviForm {
 		return $this;
 	}
 
+	/**
+	 * Sends a json request to ADL
+	 * @return string
+	 */
 	function send() {
 		$attempts = 0;
 		try {
@@ -399,7 +403,7 @@ class CaregiverApi extends MojaviForm {
 			$data = curl_exec($ch);
 
 			if ($data === false) {
-				throw new \Exception('Cannot communicate with ADL Server, please try your request again');
+				return false;
 			} else if (strpos($data, 'Request Error') !== false) {
 				throw new \Exception(strip_tags(nl2br(StringTools::getStringBetween($data, '<div id="content">', '</div>'))));
 			} else {
