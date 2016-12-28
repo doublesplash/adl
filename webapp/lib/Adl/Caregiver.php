@@ -180,7 +180,144 @@ class Caregiver extends MojaviForm  {
 	 */
 	public function setStateId($StateId)
 	{
-		$this->StateId = $StateId;
+		$this->setCountryId(1);
+		if (strtolower(trim($StateId)) == "alabama") {
+			$this->StateId = "AL";
+		} else if (strtolower(trim($StateId)) == "alaska") {
+			$this->StateId = "AK";
+		} else if (strtolower(trim($StateId)) == "arizona") {
+			$this->StateId = "AZ";
+		} else if (strtolower(trim($StateId)) == "arkansas") {
+			$this->StateId = "AR";
+		} else if (strtolower(trim($StateId)) == "califonia") {
+			$this->StateId = "CA";
+		} else if (strtolower(trim($StateId)) == "colorado") {
+			$this->StateId = "CO";
+		} else if (strtolower(trim($StateId)) == "connecticut") {
+			$this->StateId = "CT";
+		} else if (strtolower(trim($StateId)) == "delaware") {
+			$this->StateId = "DE";
+		} else if (strtolower(trim($StateId)) == "florida") {
+			$this->StateId = "FL";
+		} else if (strtolower(trim($StateId)) == "district of colombia") {
+			$this->StateId = "DC";
+		} else if (strtolower(trim($StateId)) == "georgia") {
+			$this->StateId = "GA";
+		} else if (strtolower(trim($StateId)) == "guam") {
+			$this->StateId = "GU";
+		} else if (strtolower(trim($StateId)) == "hawaii") {
+			$this->StateId = "HI";
+		} else if (strtolower(trim($StateId)) == "idaho") {
+			$this->StateId = "ID";
+		} else if (strtolower(trim($StateId)) == "illinois") {
+			$this->StateId = "IL";
+		} else if (strtolower(trim($StateId)) == "indiana") {
+			$this->StateId = "IN";
+		} else if (strtolower(trim($StateId)) == "iowa") {
+			$this->StateId = "IA";
+		} else if (strtolower(trim($StateId)) == "kansas") {
+			$this->StateId = "KS";
+		} else if (strtolower(trim($StateId)) == "kentucky") {
+			$this->StateId = "KY";
+		} else if (strtolower(trim($StateId)) == "louisiana") {
+			$this->StateId = "LS";
+		} else if (strtolower(trim($StateId)) == "maine") {
+			$this->StateId = "ME";
+		} else if (strtolower(trim($StateId)) == "maryland") {
+			$this->StateId = "MD";
+		} else if (strtolower(trim($StateId)) == "massachusetts") {
+			$this->StateId = "MA";
+		} else if (strtolower(trim($StateId)) == "michigan") {
+			$this->StateId = "MI";
+		} else if (strtolower(trim($StateId)) == "minnesota") {
+			$this->StateId = "MN";
+		} else if (strtolower(trim($StateId)) == "mississippi") {
+			$this->StateId = "MS";
+		} else if (strtolower(trim($StateId)) == "missouri") {
+			$this->StateId = "MO";
+		} else if (strtolower(trim($StateId)) == "montana") {
+			$this->StateId = "MT";
+		} else if (strtolower(trim($StateId)) == "nebraska") {
+			$this->StateId = "NE";
+		} else if (strtolower(trim($StateId)) == "nevada") {
+			$this->StateId = "NV";
+		} else if (strtolower(trim($StateId)) == "new jersey") {
+			$this->StateId = "NJ";
+		} else if (strtolower(trim($StateId)) == "new mexico") {
+			$this->StateId = "NM";
+		} else if (strtolower(trim($StateId)) == "new york") {
+			$this->StateId = "NY";
+		} else if (strtolower(trim($StateId)) == "new hampshire") {
+			$this->StateId = "NH";
+		} else if (strtolower(trim($StateId)) == "north carolina") {
+			$this->StateId = "NC";
+		} else if (strtolower(trim($StateId)) == "north dakota") {
+			$this->StateId = "ND";
+		} else if (strtolower(trim($StateId)) == "ohio") {
+			$this->StateId = "OH";
+		} else if (strtolower(trim($StateId)) == "oklahoma") {
+			$this->StateId = "OK";
+		} else if (strtolower(trim($StateId)) == "oregon") {
+			$this->StateId = "OR";
+		} else if (strtolower(trim($StateId)) == "palau") {
+			$this->StateId = "PW";
+		} else if (strtolower(trim($StateId)) == "pennsylvania") {
+			$this->StateId = "PA";
+		} else if (strtolower(trim($StateId)) == "puerto rico") {
+			$this->StateId = "PR";
+		} else if (strtolower(trim($StateId)) == "rhode island") {
+			$this->StateId = "RI";
+		} else if (strtolower(trim($StateId)) == "south carolina") {
+			$this->StateId = "SC";
+		} else if (strtolower(trim($StateId)) == "south dakota") {
+			$this->StateId = "SD";
+		} else if (strtolower(trim($StateId)) == "tennessee") {
+			$this->StateId = "TN";
+		} else if (strtolower(trim($StateId)) == "texas") {
+			$this->StateId = "TX";
+		} else if (strtolower(trim($StateId)) == "utah") {
+			$this->StateId = "UT";
+		} else if (strtolower(trim($StateId)) == "vermont") {
+			$this->StateId = "VT";
+		} else if (strtolower(trim($StateId)) == "virgin islands") {
+			$this->StateId = "VI";
+		} else if (strtolower(trim($StateId)) == "virginia") {
+			$this->StateId = "VA";
+		} else if (strtolower(trim($StateId)) == "washington") {
+			$this->StateId = "WA";
+		} else if (strtolower(trim($StateId)) == "west virginia") {
+			$this->StateId = "WV";
+		} else if (strtolower(trim($StateId)) == "wisconsin") {
+			$this->StateId = "WI";
+		} else if (strtolower(trim($StateId)) == "wyoming") {
+			$this->StateId = "WY";
+		} else if (strtolower(trim($StateId)) == "alberta") {
+			$this->StateId = "AB";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "british columbia") {
+			$this->StateId = "BC";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "manitoba") {
+			$this->StateId = "MB";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "new brunswick") {
+			$this->StateId = "NB";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "newfoundland") {
+			$this->StateId = "NL";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "northwest territories") {
+			$this->StateId = "NT";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "nova scotia") {
+			$this->StateId = "NS";
+			$this->setCountryId(2);
+		} else if (strtolower(trim($StateId)) == "nunavut") {
+			$this->StateId = "NU";
+			$this->setCountryId(2);
+		} else {
+			$this->StateId = $StateId;
+		}
 		$this->addModifiedColumn("StateId");
 		return $this;
 	}
@@ -202,7 +339,21 @@ class Caregiver extends MojaviForm  {
 	 */
 	public function setCountryId($CountryId)
 	{
-		$this->CountryId = $CountryId;
+		if (strtolower(trim($CountryId)) == "us") {
+			$this->CountryId = self::COUNTRY_US;
+		} else if (strtolower(trim($CountryId)) == "usa") {
+			$this->CountryId = self::COUNTRY_US;
+		} else if (strtolower(trim($CountryId)) == "united states") {
+			$this->CountryId = self::COUNTRY_US;
+		} else if (strtolower(trim($CountryId)) == "united states of america") {
+			$this->CountryId = self::COUNTRY_US;
+		} else if (strtolower(trim($CountryId)) == "ca") {
+			$this->CountryId = self::COUNTRY_CANADA;
+		} else if (strtolower(trim($CountryId)) == "canada") {
+			$this->CountryId = self::COUNTRY_CANADA;
+		} else {
+			$this->CountryId = $CountryId;
+		}
 		$this->addModifiedColumn("CountryId");
 		return $this;
 	}

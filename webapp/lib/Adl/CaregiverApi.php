@@ -459,7 +459,7 @@ class CaregiverApi extends MojaviForm {
 		$caregiver->getCaregiver()->setLastName('Testerson');
 		$caregiver->getCaregiver()->setDateOfBirth('01/01/2000');
 		$caregiver->getCaregiver()->setPrimaryLanguageId("");
-		$caregiver->getCaregiver()->setStateId('IL');
+		$caregiver->getCaregiver()->setStateId('WA');
 		$caregiver->getCaregiver()->setCountryId('1'); // 1 is US, 2 is Canada
 		$caregiver->getCaregiver()->setStatusId("0 - Applicant"); // 10004
 		$caregiver->getCaregiver()->setAlphabetName('T');
@@ -474,11 +474,11 @@ class CaregiverApi extends MojaviForm {
 		$caregiver->getCaregiver()->setTotalExperience('1 years');
 		$caregiver->getCaregiver()->setCreatedBy("APITest");
 		$caregiver->getCaregiver()->setCaregiverSpecializations('No Specializations');
-		$caregiver->getCaregiver()->setCaregiverLanguages('');
-		$caregiver->getCaregiver()->setCaregiverNote('No Notes');
+		$caregiver->getCaregiver()->setCaregiverLanguages("English");
+		$caregiver->getCaregiver()->setCaregiverNote("");
 		$caregiver->getCaregiver()->setCaregiverCertifications('None');
 		$caregiver->getCaregiver()->setWorkArea("");
-		$caregiver->getCaregiver()->setSource("zoho");
+		$caregiver->getCaregiver()->setSource("Unbounce Application");
 		return $caregiver->send();
 	}
 }
