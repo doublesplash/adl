@@ -224,58 +224,54 @@ class Caregiver extends MojaviForm  {
 	 */
 	public function setStatusId($StatusId)
 	{
-		if (is_int($StatusId)) {
+		if (trim(strtolower($StatusId)) == 'active') {
+			$this->StatusId = self::STATUS_ACTIVE;
+		} else if (trim(strtolower($StatusId)) == 'disqualified') {
+			$this->StatusId = self::STATUS_DISQUALIFIED;
+		} else if (trim(strtolower($StatusId)) == 'inactive') {
+			$this->StatusId = self::STATUS_INACTIVE;
+		} else if (trim(strtolower($StatusId)) == 'on disability') {
+			$this->StatusId = self::STATUS_ON_DISABILITY;
+		} else if (trim(strtolower($StatusId)) == 'disability') {
+			$this->StatusId = self::STATUS_ON_DISABILITY;
+		} else if (trim(strtolower($StatusId)) == 'on leave') {
+			$this->StatusId = self::STATUS_ON_LEAVE;
+		} else if (trim(strtolower($StatusId)) == 'leave') {
+			$this->StatusId = self::STATUS_ON_LEAVE;
+		} else if (trim(strtolower($StatusId)) == 'prospect') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == 'quit') {
+			$this->StatusId = self::STATUS_QUIT;
+		} else if (trim(strtolower($StatusId)) == 'suspended') {
+			$this->StatusId = self::STATUS_SUSPENDED;
+		} else if (trim(strtolower($StatusId)) == 'terminated') {
+			$this->StatusId = self::STATUS_TERMINATED;
+		} else if (trim(strtolower($StatusId)) == '0 - applicant') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '.5 - prospect from list') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '1 - phone screen complete') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '2 - interview scheduled') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '3 - interview completed') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '4 - orientation scheduled') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '5 - orientation completed') {
+			$this->StatusId = self::STATUS_PROSPECT;
+		} else if (trim(strtolower($StatusId)) == '6 - hired') {
+			$this->StatusId = self::STATUS_ACTIVE;
+		} else if (trim(strtolower($StatusId)) == '7 - inactive - potential') {
+			$this->StatusId = self::STATUS_INACTIVE;
+		} else if (trim(strtolower($StatusId)) == '8 - inactive - disqualified') {
+			$this->StatusId = self::STATUS_DISQUALIFIED;
+		} else if (trim(strtolower($StatusId)) == '8.5 - former employee - terminated') {
+			$this->StatusId = self::STATUS_TERMINATED;
+		} else if (trim(strtolower($StatusId)) == '9 - former employee') {
+			$this->StatusId = self::STATUS_QUIT;
+		} else {
 			$this->StatusId = $StatusId;
-		} else if (is_string($StatusId)) {
-			if (trim(strtolower($StatusId)) == 'active') {
-				$this->StatusId = self::STATUS_ACTIVE;
-			} else if (trim(strtolower($StatusId)) == 'disqualified') {
-				$this->StatusId = self::STATUS_DISQUALIFIED;
-			} else if (trim(strtolower($StatusId)) == 'inactive') {
-				$this->StatusId = self::STATUS_INACTIVE;
-			} else if (trim(strtolower($StatusId)) == 'on disability') {
-				$this->StatusId = self::STATUS_ON_DISABILITY;
-			} else if (trim(strtolower($StatusId)) == 'disability') {
-				$this->StatusId = self::STATUS_ON_DISABILITY;
-			} else if (trim(strtolower($StatusId)) == 'on leave') {
-				$this->StatusId = self::STATUS_ON_LEAVE;
-			} else if (trim(strtolower($StatusId)) == 'leave') {
-				$this->StatusId = self::STATUS_ON_LEAVE;
-			} else if (trim(strtolower($StatusId)) == 'prospect') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == 'quit') {
-				$this->StatusId = self::STATUS_QUIT;
-			} else if (trim(strtolower($StatusId)) == 'suspended') {
-				$this->StatusId = self::STATUS_SUSPENDED;
-			} else if (trim(strtolower($StatusId)) == 'terminated') {
-				$this->StatusId = self::STATUS_TERMINATED;
-			} else if (trim(strtolower($StatusId)) == '0 - Applicant') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '.5 - Prospect from List') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '1 - Phone Screen Complete') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '2 - Interview Scheduled') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '3 - Interview Completed') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '4 - Orientation Scheduled') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '5 - Orientation Completed') {
-				$this->StatusId = self::STATUS_PROSPECT;
-			} else if (trim(strtolower($StatusId)) == '6 - Hired') {
-				$this->StatusId = self::STATUS_ACTIVE;
-			} else if (trim(strtolower($StatusId)) == '7 - Inactive - Potential') {
-				$this->StatusId = self::STATUS_INACTIVE;
-			} else if (trim(strtolower($StatusId)) == '8 - Inactive - Disqualified') {
-				$this->StatusId = self::STATUS_DISQUALIFIED;
-			} else if (trim(strtolower($StatusId)) == '8.5 - Former Employee - Terminated') {
-				$this->StatusId = self::STATUS_TERMINATED;
-			} else if (trim(strtolower($StatusId)) == '9 - Former Employee') {
-				$this->StatusId = self::STATUS_QUIT;
-			} else {
-				$this->StatusId = $StatusId;
-			}
 		}
 		$this->addModifiedColumn("StatusId");
 		return $this;

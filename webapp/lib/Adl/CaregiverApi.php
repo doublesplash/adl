@@ -346,22 +346,35 @@ class CaregiverApi extends MojaviForm {
 		return $this;
 	}
 
+	function send() {
+		$attempts = 0;
+		while ($attempts < 3) {
+			try {
+				if (($result = $this->sendToAdl()) === false) {
+					$attempts++;
+				} else {
+					$attempts = 4;
+				}
+			} catch (\Exception $e) {
+				$this->getErrors()->addError('error', $e->getMessage());
+				$this->setReturnStatus($e->getMessage());
+				$this->setResult(false);
+			}
+			sleep(floor(rand(1,5)));
+		}
+		return $result;
+	}
+
 	/**
 	 * Sends a json request to ADL
 	 * @param $use_staging_url boolean
 	 * @return string
 	 */
-	function send($use_staging_url = false) {
+	private function sendToAdl() {
 		$data = null;
 		$params = array();
 		try {
-			if ($use_staging_url) {
-				#$url = 'https://app.adlware.com/adlwareiphoneservice/ImportLead.svc/AcceptLeadJSON'; // Staging
-				$url = 'https://adl-staging.kinnser.net/adlwareiphoneservice/CaregiverService.svc/Caregiver'; // Staging
-			} else {
-				$url = 'https://my.adlware.com/adlwareiphoneservice/CaregiverService.svc/Caregiver'; // Live
-			}
-
+			$url = 'https://my.adlware.com/adlwareiphoneservice/CaregiverService.svc/Caregiver'; // Live
 
 			$caregiver = $this->getCaregiver()->toArray();
 			unset($caregiver['id']);
@@ -435,30 +448,30 @@ class CaregiverApi extends MojaviForm {
 	function test() {
 		$caregiver = new CaregiverApi();
 		$caregiver->setAccessToken(self::API_TOKEN);
-		$caregiver->getCaregiver()->setCaregiverID(8027);
+		$caregiver->getCaregiver()->setCaregiverID("");
 		$caregiver->getCaregiver()->setFirstName('API Tester');
 		$caregiver->getCaregiver()->setLastName('Testerson');
-		$caregiver->getCaregiver()->setDateOfBirth('1/1/2000');
-		$caregiver->getCaregiver()->setPrimaryLanguageId(10059);
+		$caregiver->getCaregiver()->setDateOfBirth('01/01/2000');
+		$caregiver->getCaregiver()->setPrimaryLanguageId("");
 		$caregiver->getCaregiver()->setStateId('IL');
 		$caregiver->getCaregiver()->setCountryId('1'); // 1 is US, 2 is Canada
-		$caregiver->getCaregiver()->setStatusId(10004);
+		$caregiver->getCaregiver()->setStatusId("0 - Applicant"); // 10004
 		$caregiver->getCaregiver()->setAlphabetName('T');
 		$caregiver->getCaregiver()->setGender(10128);
 		$caregiver->getCaregiver()->setAddress('test');
-		$caregiver->getCaregiver()->setSSN('111­11­1111');
+		$caregiver->getCaregiver()->setSSN('000-00-0000');
 		$caregiver->getCaregiver()->setEmailId('testing999@test.com');
 		$caregiver->getCaregiver()->setMobileNumber('9898989896');
 		$caregiver->getCaregiver()->setCity('Chicago');
 		$caregiver->getCaregiver()->setZipCode('60610');
-		$caregiver->getCaregiver()->setMinHourlyRate(12);
+		$caregiver->getCaregiver()->setMinHourlyRate("");
 		$caregiver->getCaregiver()->setTotalExperience('1 years');
 		$caregiver->getCaregiver()->setCreatedBy("APITest");
 		$caregiver->getCaregiver()->setCaregiverSpecializations('No Specializations');
 		$caregiver->getCaregiver()->setCaregiverLanguages('');
 		$caregiver->getCaregiver()->setCaregiverNote('No Notes');
 		$caregiver->getCaregiver()->setCaregiverCertifications('None');
-		$caregiver->getCaregiver()->setWorkArea(10);
+		$caregiver->getCaregiver()->setWorkArea("");
 		$caregiver->getCaregiver()->setSource("zoho");
 		return $caregiver->send();
 	}
