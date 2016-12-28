@@ -9,7 +9,7 @@ class LeadApi extends MojaviForm {
 	
 	//const API_TOKEN = '786KQJIGpphLrjcp7EzVEWuCLpdRLTwnQRm0u8Ru3JUsQoeZS4WJbXh0XMO3rGHYKDwiE5IZz5qVokXcJJEDUSaA==';
 	//const API_TOKEN = '7XiWojv0tEmiS0oEjmoFjoETUlZe0nyieSTBJuY2pzt6dXtFkWNCsRzfBeDTyjY1tQmHRQrqjYffpdjnUwJTrQ==';
-	const API_TOKEN = 'b0DudF+10wrIbOqo3prX8sdoIwNlGtmTwsOZgs9Civ5wPVNoL9QR9mhe7pQwzK3hqyCFJpv94Tl4Eq966TfYUA==';
+	//const API_TOKEN = 'b0DudF+10wrIbOqo3prX8sdoIwNlGtmTwsOZgs9Civ5wPVNoL9QR9mhe7pQwzK3hqyCFJpv94Tl4Eq966TfYUA==';
 
 	protected $LeadId;
 	protected $AccessToken;
@@ -408,7 +408,7 @@ class LeadApi extends MojaviForm {
 			$data = curl_exec($ch);
 						
 			if ($data === false) {
-				throw new \Exception('Cannot communicate with ADL Server, please try your request again');
+				throw new \Exception('We did not receive confirmation that this client record was transferred to ADLWare.  You can try your request again after checking if your lead is in ADLWare under Client -> Leads -> Lead List');
 			} else if (strpos($data, 'Request Error') !== false) {
 				throw new \Exception(strip_tags(nl2br(StringTools::getStringBetween($data, '<div id="content">', '</div>'))));
 			} else {
