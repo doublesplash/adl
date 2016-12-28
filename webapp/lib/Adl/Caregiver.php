@@ -249,6 +249,30 @@ class Caregiver extends MojaviForm  {
 				$this->StatusId = self::STATUS_SUSPENDED;
 			} else if (trim(strtolower($StatusId)) == 'terminated') {
 				$this->StatusId = self::STATUS_TERMINATED;
+			} else if (trim(strtolower($StatusId)) == '0 - Applicant') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '.5 - Prospect from List') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '1 - Phone Screen Complete') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '2 - Interview Scheduled') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '3 - Interview Completed') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '4 - Orientation Scheduled') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '5 - Orientation Completed') {
+				$this->StatusId = self::STATUS_PROSPECT;
+			} else if (trim(strtolower($StatusId)) == '6 - Hired') {
+				$this->StatusId = self::STATUS_ACTIVE;
+			} else if (trim(strtolower($StatusId)) == '7 - Inactive - Potential') {
+				$this->StatusId = self::STATUS_INACTIVE;
+			} else if (trim(strtolower($StatusId)) == '8 - Inactive - Disqualified') {
+				$this->StatusId = self::STATUS_DISQUALIFIED;
+			} else if (trim(strtolower($StatusId)) == '8.5 - Former Employee - Terminated') {
+				$this->StatusId = self::STATUS_TERMINATED;
+			} else if (trim(strtolower($StatusId)) == '9 - Former Employee') {
+				$this->StatusId = self::STATUS_QUIT;
 			} else {
 				$this->StatusId = $StatusId;
 			}
