@@ -978,7 +978,7 @@ class Caregiver extends MojaviForm  {
 	public function getDisciplineId()
 	{
 		if (is_null($this->DisciplineId)) {
-			$this->DisciplineId = "6618";
+			$this->DisciplineId = "6630";
 		}
 		return $this->DisciplineId;
 	}
