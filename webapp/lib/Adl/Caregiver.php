@@ -49,6 +49,8 @@ class Caregiver extends MojaviForm  {
 	protected $CaregiverSpecializations;
 	protected $CaregiverLanguages;
 	protected $CaregiverNote;
+	protected $CaregiverGroupId;
+	protected $DisciplineId;
 	protected $CaregiverCertifications;
 	protected $WorkArea;
 	protected $Source;
@@ -148,7 +150,7 @@ class Caregiver extends MojaviForm  {
 	public function getPrimaryLanguageId()
 	{
 		if (is_null($this->PrimaryLanguageId)) {
-			$this->PrimaryLanguageId = 10059;
+			$this->PrimaryLanguageId = "10059";
 		}
 		return $this->PrimaryLanguageId;
 	}
@@ -241,6 +243,8 @@ class Caregiver extends MojaviForm  {
 			$this->PrimaryLanguageId = 10484;
 		} else if (strtolower(trim($PrimaryLanguageId)) == "vietnamese") {
 			$this->PrimaryLanguageId = 10328;
+		} else if (trim($PrimaryLanguageId) == "") {
+			$this->PrimaryLanguageId = 10059; // default to english if blank
 		} else {
 			$this->PrimaryLanguageId = $PrimaryLanguageId;
 		}
@@ -938,5 +942,59 @@ class Caregiver extends MojaviForm  {
 		$this->Source = $Source;
 		$this->addModifiedColumn("Source");
 		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCaregiverGroupId()
+	{
+		if (is_null($this->CaregiverGroupId)) {
+			$this->CaregiverGroupId = "10134";
+		}
+		return $this->CaregiverGroupId;
+	}
+
+	/**
+	 * @param mixed $CaregiverGroupId
+	 */
+	public function setCaregiverGroupId($CaregiverGroupId)
+	{
+		if (strtolower(trim($CaregiverGroupId)) == "employee") {
+			$this->CaregiverGroupId = "10134";
+		} else if (strtolower(trim($CaregiverGroupId)) == "contractor") {
+			$this->CaregiverGroupId = "10135";
+		} else if (strtolower(trim($CaregiverGroupId)) == "volunteer") {
+			$this->CaregiverGroupId = "10453";
+		} else {
+			$this->CaregiverGroupId = $CaregiverGroupId;
+		}
+		$this->addModifiedColumn("CaregiverGroupId");
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDisciplineId()
+	{
+		if (is_null($this->DisciplineId)) {
+			$this->DisciplineId = "6618";
+		}
+		return $this->DisciplineId;
+	}
+
+	/**
+	 * @param mixed $DisciplineId
+	 */
+	public function setDisciplineId($DisciplineId)
+	{
+		if (strtolower(trim($DisciplineId)) == "nursing") {
+			$this->DisciplineId = "6618";
+		} else if (strtolower(trim($DisciplineId)) == "personal care attendant") {
+			$this->DisciplineId = "6630";
+		} else {
+			$this->DisciplineId = $DisciplineId;
+		}
+		$this->addModifiedColumn("DisciplineId");
 	}
 }

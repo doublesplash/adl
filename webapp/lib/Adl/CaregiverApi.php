@@ -226,6 +226,38 @@ class CaregiverApi extends MojaviForm {
 	}
 
 	/**
+	 * Shortcut to set the discipline
+	 * @param string
+	 */
+	function setDisciplineId($arg0) {
+		$this->getCaregiver()->setDisciplineId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the discipline
+	 * @param string
+	 */
+	function setDiscipline($arg0) {
+		$this->getCaregiver()->setDisciplineId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the caregiver group
+	 * @param string
+	 */
+	function setCaregiverGroupId($arg0) {
+		$this->getCaregiver()->setCaregiverGroupId($arg0);
+	}
+
+	/**
+	 * Shortcut to set the caregiver group
+	 * @param string
+	 */
+	function setCaregiverGroup($arg0) {
+		$this->getCaregiver()->setCaregiverGroupId($arg0);
+	}
+
+	/**
 	 * Shortcut to set the source
 	 * @param string
 	 */
