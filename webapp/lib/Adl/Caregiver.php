@@ -245,8 +245,10 @@ class Caregiver extends MojaviForm  {
 			$this->PrimaryLanguageId = 10328;
 		} else if (trim($PrimaryLanguageId) == "") {
 			$this->PrimaryLanguageId = 10059; // default to english if blank
+		} else if (intval($PrimaryLanguageId) > 0) {
+			$this->PrimaryLanguageId = $PrimaryLanguageId; // only use the incoming value if it is numeric
 		} else {
-			$this->PrimaryLanguageId = $PrimaryLanguageId;
+			$this->PrimaryLanguageId = 10059; // default to english if we don't understand the value
 		}
 		$this->addModifiedColumn("PrimaryLanguageId");
 		return $this;
