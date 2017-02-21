@@ -211,6 +211,8 @@ class Caregiver extends MojaviForm  {
 			$this->PrimaryLanguageId = 10394;
 		} else if (strtolower(trim($PrimaryLanguageId)) == "micronessian") {
 			$this->PrimaryLanguageId = 10395;
+		} else if (strtolower(trim($PrimaryLanguageId)) == "micronesian") {
+			$this->PrimaryLanguageId = 10395;
 		} else if (strtolower(trim($PrimaryLanguageId)) == "nigerian") {
 			$this->PrimaryLanguageId = 10482;
 		} else if (strtolower(trim($PrimaryLanguageId)) == "other") {
@@ -280,7 +282,7 @@ class Caregiver extends MojaviForm  {
 			$this->StateId = "AZ";
 		} else if (strtolower(trim($StateId)) == "arkansas") {
 			$this->StateId = "AR";
-		} else if (strtolower(trim($StateId)) == "califonia") {
+		} else if (strtolower(trim($StateId)) == "california") {
 			$this->StateId = "CA";
 		} else if (strtolower(trim($StateId)) == "colorado") {
 			$this->StateId = "CO";

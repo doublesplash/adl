@@ -19,6 +19,19 @@ class LeadApi extends MojaviForm {
 	protected $Result;
 
 	/**
+	 * Shortcut to set the first name and last
+	 * @param string
+	 */
+	function setName($arg0) {
+		if (strpos($arg0, " ") !== false) {
+			$this->getLead()->setFirstname(trim(substr($arg0, 0, strpos($arg0, " "))));
+			$this->getLead()->setLastname(trim(substr($arg0, strpos($arg0, " ") + 1)));
+		} else {
+			$this->getLead()->setFirstname($arg0);
+		}
+	}
+
+	/**
 	 * Shortcut to set the firstname
 	 * @param string
 	 */
